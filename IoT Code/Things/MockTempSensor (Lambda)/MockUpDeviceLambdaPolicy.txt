@@ -1,0 +1,180 @@
+{
+  "roleName": "MockUpDeviceLambdaRole",
+  "policies": [
+    {
+      "name": "AWSIoTDataAccess",
+      "id": "ANPAJM2KI2UJDR24XPS2K",
+      "type": "managed",
+      "arn": "arn:aws:iam::aws:policy/AWSIoTDataAccess",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "iot:Connect",
+              "iot:Publish",
+              "iot:Subscribe",
+              "iot:Receive",
+              "iot:GetThingShadow",
+              "iot:UpdateThingShadow",
+              "iot:DeleteThingShadow"
+            ],
+            "Resource": "*"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AWSLambdaBasicExecutionRole",
+      "id": "ANPAJNCQGXC42545SKXIK",
+      "type": "managed",
+      "arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "logs:CreateLogGroup",
+              "logs:CreateLogStream",
+              "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+          }
+        ]
+      }
+    }
+  ],
+  "resources": {
+    "logs": {
+      "service": {
+        "name": "Amazon CloudWatch Logs",
+        "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgICA8ZyB0cmFuc2Zvcm09InNjYWxlKC44NTMpIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iNjE3LjQ3IiB5MT0iLTY3NC41MyIgeDI9IjcyMy41MyIgeTI9Ii01NjguNDciIGdyYWRpZW50VHJhbnNmb3JtPSJyb3RhdGUoLTkwIDY4My41IDI0LjUpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiMDA4NGQiLz4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmNGY4YiIvPgogICAgICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICAgIDwvZGVmcz4KICAgICAgICA8cGF0aCBmaWxsPSJ1cmwoI2EpIiBkPSJNMCAwaDc1djc1SDB6Ii8+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0zMS41IDQ4aC0xMWE2LjExIDYuMTEgMCAwMS0zLjE0LS45NCAxMC4xOCAxMC4xOCAwIDAxLTQuODYtOC44OUE5LjA5IDkuMDkgMCAwMTE5IDI5di0uNzhhMTMuNyAxMy43IDAgMDE3LjgyLTEyLjA4IDEzLjEyIDEzLjEyIDAgMDExNC43OSAyLjkzIDE1LjA1IDE1LjA1IDAgMDEzIDQuNCA1Ljg2IDUuODYgMCAwMTMuNjgtMS4zYzIuNzIgMCA1Ljc4IDIuMDYgNi4zNCA2LjU4IDIuNTcuNjEgNy44NSAyLjcxIDcuODUgOS41MWE5IDkgMCAwMS00LjczIDguMzlsLTEtMS43NWE3LjA4IDcuMDggMCAwMDMuNy02LjY0YzAtNS44OC00Ljg3LTcuMzQtNy03LjdhMSAxIDAgMDEtLjY1LS40MiAxIDEgMCAwMS0uMTctLjcyYy0uMjktMy42My0yLjQxLTUuMjUtNC40LTUuMjVBNCA0IDAgMDA0NSAyNS44NmExIDEgMCAwMS0uOTUuNCAxIDEgMCAwMS0uNzktLjY2IDEzLjYgMTMuNiAwIDAwLTMuMTQtNS4xMkExMS4xNiAxMS4xNiAwIDAwMjcuNjEgMTggMTEuNzYgMTEuNzYgMCAwMDIxIDI4LjJhMTIuMzQgMTIuMzQgMCAwMC4wOCAxLjM4IDEgMSAwIDAxLS44MSAxLjExIDcuMjQgNy4yNCAwIDAwLTUuNzggNy40OCA4LjEzIDguMTMgMCAwMDMuOTMgNy4yIDQgNCAwIDAwMi4wOC42M2gxMXoiLz4KICAgICAgICAgICAgPHBhdGggZD0iTTYxLjM5IDU0bC03LjEtNy4xM0ExMC42MSAxMC42MSAwIDEwNDkuNDMgNTJsNyA3YTMuNTIgMy41MiAwIDAwMi41IDEgMy40OCAzLjQ4IDAgMDAyLjQ5LTEgMy41MiAzLjUyIDAgMDAtLjAzLTV6TTQ0LjYgNTEuMTdhOC41OSA4LjU5IDAgMTE4LjU5LTguNTkgOC41OSA4LjU5IDAgMDEtOC41OSA4LjU5ek02MCA1Ny41NWExLjU3IDEuNTcgMCAwMS0yLjE2IDBsLTYuNjYtNi42NmExMC40OCAxMC40OCAwIDAwMi4xMi0yLjI0bDYuNyA2Ljc0YTEuNTQgMS41NCAwIDAxMCAyLjE2eiIvPgogICAgICAgICAgICA8cGF0aCBkPSJNNDcuMzUgMzcuOTNsLTEuMTkgMS42MWEzLjM3IDMuMzcgMCAwMC01LjM0IDMuMkEzLjMgMy4zIDAgMDA0Mi4xNSA0NUw0MSA0Ni41NmE1LjM3IDUuMzcgMCAwMTYuMzktOC42M3oiLz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo="
+      },
+      "statements": [
+        {
+          "resource": "*",
+          "service": "logs",
+          "effect": "Allow",
+          "action": "logs:CreateLogGroup",
+          "source": {
+            "index": "0",
+            "policyName": "AWSLambdaBasicExecutionRole",
+            "policyType": "managed"
+          }
+        },
+        {
+          "resource": "*",
+          "service": "logs",
+          "effect": "Allow",
+          "action": "logs:CreateLogStream",
+          "source": {
+            "index": "0",
+            "policyName": "AWSLambdaBasicExecutionRole",
+            "policyType": "managed"
+          }
+        },
+        {
+          "resource": "*",
+          "service": "logs",
+          "effect": "Allow",
+          "action": "logs:PutLogEvents",
+          "source": {
+            "index": "0",
+            "policyName": "AWSLambdaBasicExecutionRole",
+            "policyType": "managed"
+          }
+        }
+      ]
+    },
+    "iot": {
+      "service": {
+        "name": "AWS IoT",
+        "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgICA8ZyB0cmFuc2Zvcm09InNjYWxlKC44NTMpIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iLTEwLjQ3IiB5MT0iLTM2LjQ3IiB4Mj0iLTExNi41MyIgeTI9Ii0xNDIuNTMiIGdyYWRpZW50VHJhbnNmb3JtPSJyb3RhdGUoOTAgLTc2LjUgMjQuNSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFiNjYwZiIvPgogICAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNmNhZTNlIi8+CiAgICAgICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgPC9kZWZzPgogICAgICAgIDxwYXRoIGZpbGw9InVybCgjYSkiIGQ9Ik0wIDBoNzV2NzVIMHoiLz4KICAgICAgICA8ZyBmaWxsPSIjZmZmIj4KICAgICAgICAgICAgPHBhdGggZD0iTTIzIDQ2LjI5aC0uMTRhMTAuMzYgMTAuMzYgMCAwMS0zLjg3LTE5Ljk1IDEzLjM4IDEzLjM4IDAgMDEyNS4zOS01LjI2IDYuNzIgNi43MiAwIDAxMTAuMjIgNS4yNiA5LjY3IDkuNjcgMCAwMTcuOSA5LjU0IDkuMTEgOS4xMSAwIDAxLTMgNi44MmwtMS4zNy0xLjQ2YTcuMTIgNy4xMiAwIDAwMi4zNy01LjMyIDcuNyA3LjcgMCAwMC03LTcuNzIgMSAxIDAgMDEtLjkxLTEuMDVWMjdhMS4yNyAxLjI3IDAgMDAwLS4yIDQuNzUgNC43NSAwIDAwLTQuNzMtNC43NiA0LjY4IDQuNjggMCAwMC0zLjI2IDEuMzIgMSAxIDAgMDEtLjkyLjI2QTEgMSAwIDAxNDMgMjNhMTEuMzkgMTEuMzkgMCAwMC0yMi4wNyA0IDEgMSAwIDAxLS42OC45NSA4LjM2IDguMzYgMCAwMDIuNTcgMTYuM0gyM3oiLz4KICAgICAgICAgICAgPHBhdGggZD0iTTUyLjg5IDQxLjA2YTEyLjE0IDEyLjE0IDAgMDAtNy4zMi03LjQ4IDQuMjUgNC4yNSAwIDAwLTguNDcgMCAxMi4xOSAxMi4xOSAwIDAwLTcuMzIgNy40OCA0LjI0IDQuMjQgMCAwMC4yMiA4LjQ3IDEyLjMzIDEyLjMzIDAgMDA2LjUzIDYuNzZ2NS4xNGgyVjU3YTExLjExIDExLjExIDAgMDAyIC4zMXY0LjE3aDJ2LTQuMjRhMTEuMjYgMTEuMjYgMCAwMDItLjM4djQuNTdoMnYtNS4yOWExMi4yNSAxMi4yNSAwIDAwNi4yMS02LjYxIDQuMjQgNC4yNCAwIDAwLjE4LTguNDd6bS0yMi43NSA2LjQ4YTIuMjUgMi4yNSAwIDExMi4yNS0yLjI1IDIuMjUgMi4yNSAwIDAxLTIuMjUgMi4yNXptNi4zNiA2LjUzYTEwLjQ0IDEwLjQ0IDAgMDEtNC41LTQuOTQgNC4yIDQuMiAwIDAwMi4yOC0yLjcyaDIuMjJ6bTQgMS4xOWExMC4zNyAxMC4zNyAwIDAxLTItLjM3di05LjQ3YTEgMSAwIDAwLTEtMWgtMy4yYTQuMjMgNC4yMyAwIDAwLTIuNTEtMyAxMC4xNiAxMC4xNiAwIDAxNS42NS01Ljc4IDQuMjMgNC4yMyAwIDAwMy4wNiAyLjQ3em0uODQtMTkuMWEyLjI1IDIuMjUgMCAxMTIuMjUtMi4yNSAyLjI1IDIuMjUgMCAwMS0yLjI1IDIuMjV6bTQuMTkgOC4yN2ExIDEgMCAwMC0xIDF2OS4zNmExMC43IDEwLjcgMCAwMS0yIC40NFYzOGE0LjIgNC4yIDAgMDAyLjczLTIuMzkgMTAuMTEgMTAuMTEgMCAwMTUuNjUgNS43OCA0LjI1IDQuMjUgMCAwMC0yLjUxIDN6bTEgOS40NnYtNy40NmgxLjk0YTQuMjMgNC4yMyAwIDAwMi4yOSAyLjcgMTAuNDUgMTAuNDUgMCAwMS00LjI2IDQuNzZ6bTYtNi4zNWEyLjI1IDIuMjUgMCAxMTIuMjUtMi4yNSAyLjI2IDIuMjYgMCAwMS0yLjI0IDIuMjV6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
+      },
+      "statements": [
+        {
+          "resource": "*",
+          "service": "iot",
+          "effect": "Allow",
+          "action": "iot:Connect",
+          "source": {
+            "index": "0",
+            "policyName": "AWSIoTDataAccess",
+            "policyType": "managed"
+          }
+        },
+        {
+          "resource": "*",
+          "service": "iot",
+          "effect": "Allow",
+          "action": "iot:Publish",
+          "source": {
+            "index": "0",
+            "policyName": "AWSIoTDataAccess",
+            "policyType": "managed"
+          }
+        },
+        {
+          "resource": "*",
+          "service": "iot",
+          "effect": "Allow",
+          "action": "iot:Subscribe",
+          "source": {
+            "index": "0",
+            "policyName": "AWSIoTDataAccess",
+            "policyType": "managed"
+          }
+        },
+        {
+          "resource": "*",
+          "service": "iot",
+          "effect": "Allow",
+          "action": "iot:Receive",
+          "source": {
+            "index": "0",
+            "policyName": "AWSIoTDataAccess",
+            "policyType": "managed"
+          }
+        },
+        {
+          "resource": "*",
+          "service": "iot",
+          "effect": "Allow",
+          "action": "iot:GetThingShadow",
+          "source": {
+            "index": "0",
+            "policyName": "AWSIoTDataAccess",
+            "policyType": "managed"
+          }
+        },
+        {
+          "resource": "*",
+          "service": "iot",
+          "effect": "Allow",
+          "action": "iot:UpdateThingShadow",
+          "source": {
+            "index": "0",
+            "policyName": "AWSIoTDataAccess",
+            "policyType": "managed"
+          }
+        },
+        {
+          "resource": "*",
+          "service": "iot",
+          "effect": "Allow",
+          "action": "iot:DeleteThingShadow",
+          "source": {
+            "index": "0",
+            "policyName": "AWSIoTDataAccess",
+            "policyType": "managed"
+          }
+        }
+      ]
+    }
+  },
+  "trustedEntities": [
+    "lambda.amazonaws.com"
+  ]
+}

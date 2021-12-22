@@ -1,0 +1,39 @@
+import json
+import boto3
+import os
+from datetime import datetime
+from datetime import timedelta
+from random import uniform
+
+client = boto3.client('iot-data')
+
+def sendpayload(a,b):
+    payload = {
+        'timestamp': str(a),
+        'temperature': b,
+        'max': 8,
+        'min': 2,
+        'alert': False
+    }
+    
+    response = client.publish(
+    topic='fridge/temp',
+    qos=0,
+    payload=json.dumps(payload)
+    )
+    return
+
+def lambda_handler(event, context):
+
+    loop = os.environ['loop']
+
+    a = datetime.now()
+    start = datetime(a.year,a.month,a.day,8,0)
+
+    for i in range(loop):
+        sendpayload(start, round(uniform(2.0,8.0),1))
+        next = start + timedelta(hours=12)
+        sendpayload(next, round(uniform(2.0,8.0),1))
+        start = next + timedelta(hours=12)
+    
+    return

@@ -1,0 +1,134 @@
+{
+  "roleName": "TriggerSNS",
+  "policies": [
+    {
+      "name": "AWSLambdaBasicExecutionRole",
+      "id": "ANPAJNCQGXC42545SKXIK",
+      "type": "managed",
+      "arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "logs:CreateLogGroup",
+              "logs:CreateLogStream",
+              "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AWSLambdaSNSTopicDestinationExecutionRole-f4a63f31-d742-4b0d-bc37-917768ca58fd",
+      "id": "ANPAUVWC6GO3SW7UOB52O",
+      "type": "managed",
+      "arn": "arn:aws:iam::321457632183:policy/service-role/AWSLambdaSNSTopicDestinationExecutionRole-f4a63f31-d742-4b0d-bc37-917768ca58fd",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": "sns:Publish",
+            "Resource": "arn:aws:sns:ap-southeast-1:321457632183:AlertTemp"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TriggerSNSPolicy",
+      "id": "ANPAUVWC6GO3ZFWVD6V3S",
+      "type": "managed",
+      "arn": "arn:aws:iam::321457632183:policy/TriggerSNSPolicy",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "sns:Publish",
+            "Resource": "arn:aws:sns:ap-southeast-1:321457632183:AlertTemp"
+          }
+        ]
+      }
+    }
+  ],
+  "resources": {
+    "sns": {
+      "service": {
+        "name": "Amazon SNS",
+        "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgICA8ZyB0cmFuc2Zvcm09InNjYWxlKC44NTMpIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iODA2Ljc1IiB5MT0iLTM4Mi4xMyIgeDI9IjgwNi43NSIgeTI9Ii0yMzIuMTMiIGdyYWRpZW50VHJhbnNmb3JtPSJyb3RhdGUoLTEzNSA0OTMuNDk4IDI0LjUpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiMDA4NGQiLz4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmNGY4YiIvPgogICAgICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICAgIDwvZGVmcz4KICAgICAgICA8cGF0aCBmaWxsPSJ1cmwoI2EpIiBkPSJNMCAwaDc1djc1SDB6Ii8+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik01NC41OCA1MC45MnYuNTNhMi4zMyAyLjMzIDAgMDEwLS41M3pNNDEuNDUgMzFsLS4xLjE5YS43Mi43MiAwIDAwLjA5LS4yeiIvPgogICAgICAgICAgICA8cGF0aCBkPSJNMzIuNzggMjcuNTNjLS44OSAwLTguNzUtLjA3LTguNzUgMi45YTEuNDIgMS40MiAwIDAwLjEuNTUgMiAyIDAgMDAuMS4yMWw1LjQ0IDEydjYuMjFjMCAuNjMuMjYgMSAuODEgMWguMjZhOC43NiA4Ljc2IDAgMDAzLjQyLTEuNzdsLjY3LS40N2ExIDEgMCAwMC40Ny0uODR2LTQuMWw2LjA1LTEyYS43Mi43MiAwIDAwLjA5LS4yIDEuNDIgMS40MiAwIDAwLjEtLjU1YzAtMy4wMS03Ljg2LTIuOTQtOC43Ni0yLjk0em0wIDEuODRjMy41MyAwIDUuOC42MiA2LjU2IDEuMDYtLjc2LjQ0LTMgMS4wNi02LjU2IDEuMDZzLTUuNzktLjYyLTYuNTUtMS4wNmMuNzctLjQzIDMuMDItMS4wNiA2LjU1LTEuMDZ6bS43MyAxM1Y0Ni45M2wtLjM5LjI0Yy0uNTcuMzMtMS4wNy41Ni0xLjY0Ljg2VjQzYTEuMTQgMS4xNCAwIDAwLS4wOC0uNGwtNC4yNi05Ljc0YTI1LjkxIDI1LjkxIDAgMDA1LjY0LjYyIDI2LjM3IDI2LjM3IDAgMDA1LjQ4LS41OHoiLz4KICAgICAgICAgICAgPHBhdGggZD0iTTUxIDU1LjE3YTIyLjggMjIuOCAwIDAxLTEzLjQ2IDQuMzNjLTEwLjg4IDAtMjAuMTYtNy4wNy0yMi4zNC0xNy41YTQuNTEgNC41MSAwIDAwNC4xOC0zLjQ5aDUuMXYtMS44OUgxOS40QTQuNDkgNC40OSAwIDAwMTUuMjIgMzNhMjMgMjMgMCAwMTM1LjQtMTMuNDJMNTEuNzYgMThhMjUgMjUgMCAwMC0zOC42OCAxNS40NCA0LjQ4IDQuNDggMCAwMDAgOC4xM0EyNSAyNSAwIDAwMzcuNTQgNjEuNWEyNC43NyAyNC43NyAwIDAwMTQuNTgtNC43MXpNMTIuNSAzNy41YTIuNSAyLjUgMCAwMTIuMi0yLjVoLjNhMi41IDIuNSAwIDExLTIuNDkgMi41ek0xNC44NiAzNWgtLjE1eiIvPgogICAgICAgICAgICA8cGF0aCBkPSJNNjAgNDJhNC41IDQuNSAwIDEwLTQuNC01LjQzaC01LjJWMjQuMmgyLjdhNC41IDQuNSAwIDEwLjA4LTEuNjFsLTMuNjgtLjA1YS44My44MyAwIDAwLTEgLjg4djEzLjEyaC03LjY5djEuODVoNy42OXYxMy4wOGExIDEgMCAwMDEgMWgzLjE0YTQuNSA0LjUgMCAxMDAtMS43N2gtMi4xOGwtLjA1LTEyLjMyaDUuMTlBNC41MSA0LjUxIDAgMDA2MCA0MnptMC03YTIuNSAyLjUgMCAxMS0yLjUgMi41QTIuNSAyLjUgMCAwMTYwIDM1em0tMi41LTEzLjkxYTIuNDkgMi40OSAwIDExLTIuNSAyLjQ3IDIuNDkgMi40OSAwIDAxMi41MS0yLjQ5ek01NyA0OWEyLjUgMi41IDAgMTEtMi40NyAyLjgxdi0uM2EyLjMzIDIuMzMgMCAwMS4wNi0uNTNBMi41MSAyLjUxIDAgMDE1NyA0OXoiLz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo="
+      },
+      "statements": [
+        {
+          "resource": "arn:aws:sns:ap-southeast-1:321457632183:AlertTemp",
+          "service": "sns",
+          "effect": "Allow",
+          "action": "sns:Publish",
+          "source": {
+            "index": "0",
+            "policyName": "AWSLambdaSNSTopicDestinationExecutionRole-f4a63f31-d742-4b0d-bc37-917768ca58fd",
+            "policyType": "managed"
+          }
+        },
+        {
+          "resource": "arn:aws:sns:ap-southeast-1:321457632183:AlertTemp",
+          "service": "sns",
+          "effect": "Allow",
+          "action": "sns:Publish",
+          "source": {
+            "index": "VisualEditor0",
+            "policyName": "TriggerSNSPolicy",
+            "policyType": "managed"
+          }
+        }
+      ]
+    },
+    "logs": {
+      "service": {
+        "name": "Amazon CloudWatch Logs",
+        "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgICA8ZyB0cmFuc2Zvcm09InNjYWxlKC44NTMpIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iNjE3LjQ3IiB5MT0iLTY3NC41MyIgeDI9IjcyMy41MyIgeTI9Ii01NjguNDciIGdyYWRpZW50VHJhbnNmb3JtPSJyb3RhdGUoLTkwIDY4My41IDI0LjUpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiMDA4NGQiLz4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmNGY4YiIvPgogICAgICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICAgIDwvZGVmcz4KICAgICAgICA8cGF0aCBmaWxsPSJ1cmwoI2EpIiBkPSJNMCAwaDc1djc1SDB6Ii8+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0zMS41IDQ4aC0xMWE2LjExIDYuMTEgMCAwMS0zLjE0LS45NCAxMC4xOCAxMC4xOCAwIDAxLTQuODYtOC44OUE5LjA5IDkuMDkgMCAwMTE5IDI5di0uNzhhMTMuNyAxMy43IDAgMDE3LjgyLTEyLjA4IDEzLjEyIDEzLjEyIDAgMDExNC43OSAyLjkzIDE1LjA1IDE1LjA1IDAgMDEzIDQuNCA1Ljg2IDUuODYgMCAwMTMuNjgtMS4zYzIuNzIgMCA1Ljc4IDIuMDYgNi4zNCA2LjU4IDIuNTcuNjEgNy44NSAyLjcxIDcuODUgOS41MWE5IDkgMCAwMS00LjczIDguMzlsLTEtMS43NWE3LjA4IDcuMDggMCAwMDMuNy02LjY0YzAtNS44OC00Ljg3LTcuMzQtNy03LjdhMSAxIDAgMDEtLjY1LS40MiAxIDEgMCAwMS0uMTctLjcyYy0uMjktMy42My0yLjQxLTUuMjUtNC40LTUuMjVBNCA0IDAgMDA0NSAyNS44NmExIDEgMCAwMS0uOTUuNCAxIDEgMCAwMS0uNzktLjY2IDEzLjYgMTMuNiAwIDAwLTMuMTQtNS4xMkExMS4xNiAxMS4xNiAwIDAwMjcuNjEgMTggMTEuNzYgMTEuNzYgMCAwMDIxIDI4LjJhMTIuMzQgMTIuMzQgMCAwMC4wOCAxLjM4IDEgMSAwIDAxLS44MSAxLjExIDcuMjQgNy4yNCAwIDAwLTUuNzggNy40OCA4LjEzIDguMTMgMCAwMDMuOTMgNy4yIDQgNCAwIDAwMi4wOC42M2gxMXoiLz4KICAgICAgICAgICAgPHBhdGggZD0iTTYxLjM5IDU0bC03LjEtNy4xM0ExMC42MSAxMC42MSAwIDEwNDkuNDMgNTJsNyA3YTMuNTIgMy41MiAwIDAwMi41IDEgMy40OCAzLjQ4IDAgMDAyLjQ5LTEgMy41MiAzLjUyIDAgMDAtLjAzLTV6TTQ0LjYgNTEuMTdhOC41OSA4LjU5IDAgMTE4LjU5LTguNTkgOC41OSA4LjU5IDAgMDEtOC41OSA4LjU5ek02MCA1Ny41NWExLjU3IDEuNTcgMCAwMS0yLjE2IDBsLTYuNjYtNi42NmExMC40OCAxMC40OCAwIDAwMi4xMi0yLjI0bDYuNyA2Ljc0YTEuNTQgMS41NCAwIDAxMCAyLjE2eiIvPgogICAgICAgICAgICA8cGF0aCBkPSJNNDcuMzUgMzcuOTNsLTEuMTkgMS42MWEzLjM3IDMuMzcgMCAwMC01LjM0IDMuMkEzLjMgMy4zIDAgMDA0Mi4xNSA0NUw0MSA0Ni41NmE1LjM3IDUuMzcgMCAwMTYuMzktOC42M3oiLz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo="
+      },
+      "statements": [
+        {
+          "resource": "*",
+          "service": "logs",
+          "effect": "Allow",
+          "action": "logs:CreateLogGroup",
+          "source": {
+            "index": "0",
+            "policyName": "AWSLambdaBasicExecutionRole",
+            "policyType": "managed"
+          }
+        },
+        {
+          "resource": "*",
+          "service": "logs",
+          "effect": "Allow",
+          "action": "logs:CreateLogStream",
+          "source": {
+            "index": "0",
+            "policyName": "AWSLambdaBasicExecutionRole",
+            "policyType": "managed"
+          }
+        },
+        {
+          "resource": "*",
+          "service": "logs",
+          "effect": "Allow",
+          "action": "logs:PutLogEvents",
+          "source": {
+            "index": "0",
+            "policyName": "AWSLambdaBasicExecutionRole",
+            "policyType": "managed"
+          }
+        }
+      ]
+    }
+  },
+  "trustedEntities": [
+    "lambda.amazonaws.com"
+  ]
+}

@@ -1,0 +1,24 @@
+import json
+import boto3
+import random
+from datetime import datetime
+
+# Simulate Bar Code Scanner
+# Publish to Topic fridge/inventory
+# 3 parameters of timestamp, in or out status, box serial number
+
+def lambda_handler(event, context):
+    client = boto3.client('iot-data')
+    
+    payload = {
+        'timestamp': str(datetime.now()),
+        'status': "out",
+        'box':'1000'
+    }
+    response = client.publish(
+        topic='fridge/inventory',
+        qos=0,
+        payload=json.dumps(payload)
+    )
+    
+    return response
